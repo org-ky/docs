@@ -1,0 +1,26 @@
+DOCKER
+####### Import Docker GPG key used for signing Docker packages:
+curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+
+###### Add Docker repository which contain the latest stable releases of Docker CE. ######
+###### This command will add repository URL to /etc/apt/sources.list.d/docker.list. ######
+echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | tee /etc/apt/sources.list.d/docker.list
+
+apt-get update
+
+###### To install Docker CE
+apt-get remove docker docker-engine docker.io
+apt-get -y install docker-ce
+systemctl start docker
+systemctl enable docker
+
+DOCKER COMPOSE
+sudo apt install -y curl
+curl -s https://api.github.com/repos/docker/compose/releases/latest \
+  | grep browser_download_url \
+  | grep docker-compose-Linux-x86_64 \
+  | cut -d '"' -f 4 \
+  | wget -qi -
+chmod +x docker-compose-Linux-x86_64
+sudo mv docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+docker-compose version
