@@ -1,11 +1,11 @@
-DOCKER
+DOCKER INSTALL
+
 ####### Import Docker GPG key used for signing Docker packages:
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 
 ###### Add Docker repository which contain the latest stable releases of Docker CE. ######
 ###### This command will add repository URL to /etc/apt/sources.list.d/docker.list. ######
 echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | tee /etc/apt/sources.list.d/docker.list
-
 apt-get update
 
 ###### To install Docker CE
@@ -13,6 +13,54 @@ apt-get remove docker docker-engine docker.io
 apt-get -y install docker-ce
 systemctl start docker
 systemctl enable docker
+
+###### Version Check
+docker version
+
+DOCKER SERVICE
+
+sudo systemctl start docker
+sudo systemctl stop docker
+sudo systemctl restart docker
+sudo systemctl status docker
+sudo systemctl enable docker
+sudo systemctl disable docker
+
+DOCKER iMAGES
+
+###### Download image from Docker Hub
+docker pull [OPTIONS] NAME [:TAG|@DIGEST]
+$ docker pull busybox:stable-uclibc
+
+###### List images
+docker images
+
+###### Create image from Dockerfile
+docker build -t nome_utente_dockerhub/nome_immagine .
+
+
+DOCKER CONTAINER
+
+###### Run a container
+docker run [OPTIONS] IMAGE [:TAG|@DIGEST] [CMD] [ARG...]
+$ docker run busybox:1.24
+$ ocker run busybox:1.24 echo “hello world”
+$ docker run busybox:1.24 ls /
+$ docker run -i -t busybox:1.24
+$ docker run -d busybox:1.24
+$ docker run -d busybox:1.24 sleep 1000
+$ docker run --rm busybox:1.24 sleep 1
+$ docker run –name hello_world busybox:1.24 sleep 1
+
+docker run -p host_port:container_port IMAGE [:TAG|
+$ docker run -it -p 8888:8080 tomcat:8.0
+
+###### Inspect a container
+docker inspect <container_id>
+
+
+
+
 
 DOCKER COMPOSE
 sudo apt install -y curl
