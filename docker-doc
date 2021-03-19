@@ -26,7 +26,7 @@ sudo systemctl status docker
 sudo systemctl enable docker
 sudo systemctl disable docker
 
-DOCKER iMAGES
+DOCKER IMAGES
 
 ###### Download image from Docker Hub
 docker pull [OPTIONS] NAME [:TAG|@DIGEST]
@@ -57,6 +57,16 @@ $ docker run -it -p 8888:8080 tomcat:8.0
 
 ###### Inspect a container
 docker inspect <container_id>
+
+###### Container Log
+docker logs <container_id>
+
+###### Show CAll Containers
+sudo docker ps -a
+
+###### Show Active Containers
+sudo docker ps
+
 
 
 
