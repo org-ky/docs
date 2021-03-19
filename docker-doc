@@ -61,7 +61,7 @@ docker inspect <container_id>
 ###### Container Log
 docker logs <container_id>
 
-###### Show CAll Containers
+###### Show All Containers
 sudo docker ps -a
 
 ###### Show Active Containers
