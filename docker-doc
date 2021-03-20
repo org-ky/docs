@@ -44,7 +44,7 @@ DOCKER CONTAINER
 ###### Run a container
 docker run [OPTIONS] IMAGE [:TAG|@DIGEST] [CMD] [ARG...]
 $ docker run busybox:1.24
-$ ocker run busybox:1.24 echo “hello world”
+$ docker run busybox:1.24 echo “hello world”
 $ docker run busybox:1.24 ls /
 $ docker run -i -t busybox:1.24
 $ docker run -d busybox:1.24
@@ -67,7 +67,9 @@ sudo docker ps -a
 ###### Show Active Containers
 sudo docker ps
 
-
+###### Remome a container
+docker rm <nome container>
+$ docker rm quizzical_nash 
 
 
 
