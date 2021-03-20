@@ -1,4 +1,4 @@
-DOCKER INSTALL
+-----------------------------DOCKER INSTALL-----------------------------------
 
 ####### Import Docker GPG key used for signing Docker packages:
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
@@ -17,7 +17,7 @@ systemctl enable docker
 ###### Version Check
 docker version
 
-DOCKER SERVICE
+-----------------------------DOCKER SERVICE----------------------------------
 
 sudo systemctl start docker
 sudo systemctl stop docker
@@ -26,7 +26,7 @@ sudo systemctl status docker
 sudo systemctl enable docker
 sudo systemctl disable docker
 
-DOCKER IMAGES
+-----------------------------DOCKER IMAGES-----------------------------------
 
 ###### Download image from Docker Hub
 docker pull [OPTIONS] NAME [:TAG|@DIGEST]
@@ -39,7 +39,7 @@ docker images
 docker build -t nome_utente_dockerhub/nome_immagine .
 docker build -t nome_utente_dockerhub/nome_immagine . --no-cache=true
 
-DOCKER HUB
+-----------------------------DOCKER HUB--------------------------------------
 
 ###### Login to dockerhub
 docker login --username=<username>
@@ -52,7 +52,7 @@ docker commit <existing-container> <hub-user>/<repo-name>[:<tag>]
 docker push <hub-user>/<repo-name>:<tag>
 $ docker push xelex/debian:1.01
 
-DOCKER CONTAINER
+-----------------------------DOCKER CONTAINER--------------------------------
 
 ###### Run a container
 docker run [OPTIONS] IMAGE [:TAG|@DIGEST] [CMD] [ARG...]
@@ -90,7 +90,7 @@ $ docker rm quizzical_nash
 
 
 
-DOCKER COMPOSE
+------------------------------DOCKER COMPOSE-----------------------------------
 
 ###### Docker Compose Install
 sudo apt install -y curl
