@@ -37,7 +37,20 @@ docker images
 
 ###### Create image from Dockerfile
 docker build -t nome_utente_dockerhub/nome_immagine .
+docker build -t nome_utente_dockerhub/nome_immagine . --no-cache=true
 
+DOCKER HUB
+
+###### Login to dockerhub
+docker login --username=<username>
+$ docker login --username=xelex
+
+###### Upload image to dockerhub
+docker build -t <hub-user>/<repo-name>[:<tag>]
+docker tag <existing-image> <hub-user>/<repo-name>[:<tag>]
+docker commit <existing-container> <hub-user>/<repo-name>[:<tag>]
+docker push <hub-user>/<repo-name>:<tag>
+$ docker push xelex/debian:1.01
 
 DOCKER CONTAINER
 
@@ -67,14 +80,19 @@ sudo docker ps -a
 ###### Show Active Containers
 sudo docker ps
 
+###### Rerun a container
+docker run <cimage name>
+
 ###### Remome a container
-docker rm <nome container>
+docker rm <container name>
 $ docker rm quizzical_nash 
 
 
 
 
 DOCKER COMPOSE
+
+###### Docker Compose Install
 sudo apt install -y curl
 curl -s https://api.github.com/repos/docker/compose/releases/latest \
   | grep browser_download_url \
