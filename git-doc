@@ -1,0 +1,48 @@
+1. Creazione di un nuovo repository
+Crea una nuova directory, entraci ed esegui:
+    git init
+per creare un nuovo repository git.
+
+2. Checkout di un repository
+Crea una copia di un repository locale eseguendo il comando:
+    git clone /percorso/del/repository
+usando invece un server remoto, il comando sarà:
+    git clone kyko2323@gmail.com:/percorso/del/repository
+$ git clone https://github.com/org-ky/pyky.git
+
+3. Ambiente di lavoro
+La copia locale del repository è composta da tre "alberi" mantenuti da git. 
+Il primo è la tua Directory di lavoro che contiene i files attuali. 
+Il secondo è l'Index che fa da spazio di transito per i files e 
+per finire l'HEAD che punta all'ultimo commit fatto.
+
+4. Aggiungere e Validare
+Puoi proporre modifiche (aggiungendole all'Index) usando:
+    git add <nomedelfile>
+    git add *
+Questo è il primo passo nel flusso di lavoro in git. 
+Per validare queste modifiche fatte si usa:
+    git commit -m "Messaggio per la commit"
+Ora il file è correttamente nell'HEAD, ma non ancora nel repository remoto.
+
+5. Invio delle modifiche
+Quello che hai cambiato ora è nell'HEAD della copia locale. 
+Per inviare queste modifiche al repository remoto, esegui:
+    git push origin master
+Cambia master nel branch al quale vuoi inviare i cambiamenti.
+
+6. Update delle modifiche
+Per aggiornare il tuo repository locale alla commit più recente, esegui
+    git pull
+nella tua directory corrente per fare una fetch (recuperare) ed incorporare(merge) 
+le modifiche fatte sul server remoto.
+per incorporare un altro branch nel tuo branch attivo (ad esempio master), utilizza
+    git merge <branch>
+in entrambi i casi git prova ad auto-incorporare le modifiche. 
+Sfortunatamente, a volte questa procedura automatizzata non è possibile, ed in questo 
+caso ci saranno dei conflitti. Sei tu il responsabile che sistemerà questi conflitti 
+manualmente modificando i file che git mostrerà. Dopo aver cambiato questi files, 
+dovrai marcarli come 'correttamente incorporati' tramite
+    git add <nomedelfile>
+prima di immettere le modifiche, potrai anche visualizzarne un'anteprima eseguendo
+    git diff <branch_sorgente> <branch_target>
