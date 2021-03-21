@@ -87,7 +87,9 @@ docker run <cimage name>
 docker rm <container name>
 $ docker rm quizzical_nash 
 
-
+###### Run a command on existing container
+docker exec -it <container-id> <command-name>
+$ docker exec -it bc0ffceb320a bash
 
 
 ------------------------------DOCKER COMPOSE-----------------------------------
@@ -102,3 +104,23 @@ curl -s https://api.github.com/repos/docker/compose/releases/latest \
 chmod +x docker-compose-Linux-x86_64
 sudo mv docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
 docker-compose version
+
+###### Starts up all the containers
+docker-compose up
+
+###### Checks the status of the container managed
+docker-compose ps
+
+###### Logs the containers
+docker-compose logs
+docker-compose logs -f
+docker-compose logs <container name>
+
+###### Stops all the running containers
+docker-compose stop
+
+###### Removes all the containers
+docker-compose rm
+
+###### Rebuilds all the images
+docker-compose build
