@@ -1,0 +1,34 @@
+###### Install Jenkins
+https://www.youtube.com/watch?v=pMO26j2OUME
+
+Creato utente "admin" con mail "kyko2323@gmail.com"
+
+L’interfaccia presenta la sezione di controllo sulla spalla sinistra e un riassunto degli ultimi job eseguiti.
+
+La configurazione avviene mediante il menu Manage Jenkins. Volendosi limitare ad una configurazione semplice, oltre alla configurazione degli utenti e dei loro privilegi, che ci sentiamo di consigliare caldamente, vanno configurati solo i seguenti parametri:
+
+    # of executors, ovvero il numero di job eseguibili contemporaneamente nel nodo, il valore di default è 2,
+    Jenkins Location: è l’URL pubblica di Jenkins stesso e l’indirizzo email dell’amministratore di Jenkins
+
+Una configurazione più avanzata permette di abilitare una delle caratteristiche maggiormente apprezzate di Jenkins: il parallelismo su più macchine. 
+È possibile infatti installare Jenkins su più nodi (detti slave) di una rete; tutti gli slave vengono coordinati dall’unico nodo master, il quale distribuisce il carico di lavoro tra i vari slave per ottimizzare la velocità di esecuzione dei job. 
+È questa una caratteristica particolarmente apprezzata in quei progetti in generale molto grandi o con un elevato numero di test automatici da effettuare.
+
+###### Create Multibranch Pipeline with Git
+https://www.youtube.com/watch?v=tuxO7ZXplRE
+
+
+I Job di Jenkins
+
+Il punto di forza di Jenkins è la creazione di un job, che non è null’altro se non una serie di operazioni da effettuare in sequenza e di cui monitorare l’output.
+
+Le fasi tipiche di un job sono ovviamente i passi tipici del lavoro di build di un’applicazione:
+
+- Check-out del codice sorgente da un CVS (Subversion, Git, etc…)
+
+- Build steps
+
+- Post-build steps
+
+Un tipico job orientato alla CI, verifica periodicamente se ci sono dei nuovi commit su un particolare repository; in caso positivo effettua, nell’ordine indicato i passi descritti nella sezione di build (tipicamente una compilazione, esecuzione dei test automatici e creazione degli artefatti) e quindi, nel caso in cui la fase di build sia terminata con esito positivo, esegue le azioni indicate nella fase di post-build (tipicamente l’invio di una notifica agli sviluppatori con i risultati dei test, l’archiviazione degli artefatti su un repository, il deploy in ambiente di test e/o esercizio).
+
