@@ -1,3 +1,12 @@
+Jenkins è uno strumento di integrazione continua open source e rappresenta uno dei principali strumenti di automazione di compiti. 
+Esso permette agli utenti, tramite la definizione di project (in passato definiti jobs) di automatizzare una serie complessa di compiti, quali
+ad esempio la compilazione di una componente software a partire dal suo codice sorgente, l’esecuzione dei test e la visualizzazione dei loro risultati e il deploy dell’artefatto 
+ottenuto verso un dei prodotti.
+Jenkins è facilmente installabile e configurabile ed è funzionante “out of the box” senza particolari impostazioni; presenta un ricco ecosistema di plugin messi a disposizione 
+dalla comunità ed è estensibile, tramite questi ultimi, qualora le funzionalità desiderate non fossero già disponibili.
+Jenkins si basa su un’architettura master-slave, dove un’istanza principale (il master) coordina i vari compiti tra uno o più slave, i quali rappresentano dei meri esecutori dei 
+lavori a loro assegnati.
+
 ###### Install Jenkins
 https://www.youtube.com/watch?v=pMO26j2OUME
 
