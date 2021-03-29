@@ -83,13 +83,16 @@ sudo docker ps
 ###### Rerun a container
 docker run <cimage name>
 
-###### Remome a container
+###### Remame a container
 docker rm <container name>
 $ docker rm quizzical_nash 
 
 ###### Run a command on existing container
 docker exec -it <container-id> <command-name>
 $ docker exec -it bc0ffceb320a bash
+
+###### Start a container
+docker start <container_id>
 
 
 ------------------------------DOCKER COMPOSE-----------------------------------

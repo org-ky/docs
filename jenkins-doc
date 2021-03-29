@@ -1,3 +1,4 @@
+-------------------------------------------- JENKINS ----------------------------------------------
 Jenkins è uno strumento di integrazione continua open source e rappresenta uno dei principali strumenti di automazione di compiti. 
 Esso permette agli utenti, tramite la definizione di project (in passato definiti jobs) di automatizzare una serie complessa di compiti, quali
 ad esempio la compilazione di una componente software a partire dal suo codice sorgente, l’esecuzione dei test e la visualizzazione dei loro risultati e il deploy dell’artefatto 
