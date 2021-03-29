@@ -1,4 +1,5 @@
 -------------------------------------------- JENKINS ----------------------------------------------
+
 Jenkins è uno strumento di integrazione continua open source e rappresenta uno dei principali strumenti di automazione di compiti. 
 Esso permette agli utenti, tramite la definizione di project (in passato definiti jobs) di automatizzare una serie complessa di compiti, quali
 ad esempio la compilazione di una componente software a partire dal suo codice sorgente, l’esecuzione dei test e la visualizzazione dei loro risultati e il deploy dell’artefatto 
@@ -26,6 +27,7 @@ Una configurazione più avanzata permette di abilitare una delle caratteristiche
 
 ###### Create Multibranch Pipeline with Git
 https://www.youtube.com/watch?v=tuxO7ZXplRE
+
 In a normal "pipeline", the jobs are executed in sequence. 
 In a "multi-branch pipeline", the jobs are executed in parallel.
 
@@ -43,3 +45,35 @@ Le fasi tipiche di un job sono ovviamente i passi tipici del lavoro di build di 
 
 Un tipico job orientato alla CI, verifica periodicamente se ci sono dei nuovi commit su un particolare repository; in caso positivo effettua, nell’ordine indicato i passi descritti nella sezione di build (tipicamente una compilazione, esecuzione dei test automatici e creazione degli artefatti) e quindi, nel caso in cui la fase di build sia terminata con esito positivo, esegue le azioni indicate nella fase di post-build (tipicamente l’invio di una notifica agli sviluppatori con i risultati dei test, l’archiviazione degli artefatti su un repository, il deploy in ambiente di test e/o esercizio).
 
+###### Jenkinsfile
+https://youtu.be/MY1w7sWW5ms
+
+###### Triggers Jenkins build
+https://youtu.be/CmwTPxdx24Y
+
+###### Build jar file with Maven
+https://www.bogotobogo.com/DevOps/Jenkins/Jenkins_GitHub_Java_Application_Project_Build_Configuration_Maven.php
+
+First of all, create a Jenkins Freestyle Project.
+
+TZ=Asia/Kolkata
+0 */1 * * *
+
+Please add the above code in Build periodically box. It will run your code once an hour. For creating the jar file,
+
+cd '<your project location in the disk>'
+mvn clean install
+
+Now this will build your jar file. To run the jar file,
+
+cd 'target'
+java -jar <project jar file name>.jar
+
+So total script will be like :
+
+cd '<your project location in the disk>'
+mvn clean install
+cd 'target'
+java -jar <project jar file name>.jar
+
+Add the above code to Execute shell block in Build -> Add build step -> Execute shell in the job configuration. Hope this is what you are looking for.
