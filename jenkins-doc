@@ -26,7 +26,8 @@ Una configurazione più avanzata permette di abilitare una delle caratteristiche
 
 ###### Create Multibranch Pipeline with Git
 https://www.youtube.com/watch?v=tuxO7ZXplRE
-
+In a normal "pipeline", the jobs are executed in sequence. 
+In a "multi-branch pipeline", the jobs are executed in parallel.
 
 I Job di Jenkins
 
