@@ -1,0 +1,87 @@
+------------------------- INSTALL AND SOURCES -------------------------
+###### Officials sources
+https://kubernetes.io/docs/tasks/tools/
+
+###### Install Kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+
+###### Install Minikube
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.23.0/minikube-linux-amd64 && chmod +xminikube && sudo mv minikube /usr/local/bin/
+
+
+-------------------------- START/STOP/STATUS --------------------------
+###### Start/Stop Minikube
+minikube start
+minikube stop
+
+###### Status Minikube
+minikube status
+
+If error, run:
+minikube start —vm driver=none
+
+
+----------------------------- DEPLOYMENT -------------------------------
+###### Deploy a deploymnet by image
+kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080
+
+###### Deploy a deploymnet by YAML file
+kubectl apply -f ./deployment.yaml
+
+###### Expose deployment
+kubectl expose deployment <deployment name> --type=NodePort
+$ kubectl expose deployment hello-minikube  --type=NodePort
+
+###### Delete deployment
+kubectl delete deployment hello-minikube
+
+###### Scaling deployment with more replicas
+kubectl scale --replicas=4 deployment/<deployment name>
+$ kubectl scale --replicas=4 deployment/tomcat-deployment
+
+###### Define Load Balancer service
+kubectl expose deployment <deployment name> --type=LoadBalancer --port=<internal port> --target-port=<external port> --name=<load balancer service name>
+$ kubectl expose deployment tomcat-deployment --type=LoadBalancer --port=8080 --target-port=8080 --name tomcat-load-balancer
+
+###### List deployments
+kubectl list deployments
+
+###### View status of deployment roll outs
+kubectl rollout status
+
+###### Set image of a deployment
+kubectl set image
+
+###### View the history of a rollout, including previous revisions
+kubectl rollout history
+ 
+------------------------------ PODS -------------------------------
+###### List the active "pods"
+kubectl get pod
+
+###### Describe pod
+kubectl describe pod <pod name>
+
+###### Forwards one o more local ports to a pod
+kubectl port-forward <pod name> [local port]:[remote port]
+
+###### Read pod logs
+kubectl attach <pod name>
+
+###### Associate key-velue label to the pod
+kubectl label pods <pod name> <key>=<value>
+
+###### Enter into the pod
+kubectl exec -it pod <pod name> bash
+
+
+---------------------------- SERVICES -------------------------------
+###### Service info
+minikube service hello-minikube --url
+
+###### Access the sample service
+curl $(minikube service hello-minikube --url)
+
+###### Describe service
+kubectl describe services <service name>
+$ kubectl describe services tomcat-load-balancer
