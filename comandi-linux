@@ -28,7 +28,17 @@ sudo su <nome utente>
 sudo su -
 sudo su xelex
 
+#Ip Config
+ip -c a
+
 #Port listening
 sudo ss -tulw
 sudo ss -tulwn
 sudo ss -tulwn | grep LISTEN
+
+# Http Get request
+wget <URL>
+
+#RAM info
+free
+free -m

@@ -87,13 +87,23 @@ docker run <cimage name>
 docker rm <container name>
 $ docker rm quizzical_nash 
 
+###### Log into container as root
+sudo docker exec -u 0 -it <container_id> bash
+$ sudo docker exec -u 0 -it aaa229b659b3 bash
+
 ###### Run a command on existing container
 docker exec -it <container-id> <command-name>
 $ docker exec -it bc0ffceb320a bash
 
+###### Copy file from host to container
+sudo docker cp Scaricati/apache-maven-3.8.1-bin.tar.gz <container_id>:/etc
+$ sudo docker cp Scaricati/apache-maven-3.8.1-bin.tar.gz aaa229b659b3:/etc
+
 ###### Start a container
 docker start <container_id>
 
+###### Automatic start a container
+sudo docker update --restart unless-stopped <container_id>
 
 ------------------------------DOCKER COMPOSE-----------------------------------
 

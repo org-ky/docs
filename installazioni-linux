@@ -27,7 +27,6 @@ chown -R root:root apache-maven-3.6.3
 mv apache-maven-3.6.3 /opt/
 export M2_HOME=/opt/apache-maven-3.6.3
 export M2=$M2_HOME/bin
-javac
 
 ------------------- POSTGRESQL --------------
 [https://docs.boundlessgeo.com/suite/1.1.1/dataadmin/pgGettingStarted/firstconnect.html]

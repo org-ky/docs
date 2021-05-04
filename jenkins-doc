@@ -25,11 +25,16 @@ Una configurazione più avanzata permette di abilitare una delle caratteristiche
 È possibile infatti installare Jenkins su più nodi (detti slave) di una rete; tutti gli slave vengono coordinati dall’unico nodo master, il quale distribuisce il carico di lavoro tra i vari slave per ottimizzare la velocità di esecuzione dei job. 
 È questa una caratteristica particolarmente apprezzata in quei progetti in generale molto grandi o con un elevato numero di test automatici da effettuare.
 
+###### Restart Jenkins
+http://localhost:8080/safeRestart
+
 ###### Create Multibranch Pipeline with Git
 https://www.youtube.com/watch?v=tuxO7ZXplRE
 
-In a normal "pipeline", the jobs are executed in sequence. 
-In a "multi-branch pipeline", the jobs are executed in parallel.
+"Freestyle project" is used for simple, single tasks (e.g. run tests).
+"Pipeline" is used for whole delivery cycle (e.g. test | build | ...).
+In a normal "pipeline", the jobs are executed in sequence and for a single branch. 
+In a "multi-branch pipeline", the jobs are executed in parallel on more branches.
 
 I Job di Jenkins
 
@@ -53,28 +58,16 @@ https://www.youtube.com/watch?v=7KCS70sCoK0
 https://youtu.be/CmwTPxdx24Y
 
 ###### Build jar file with Maven
-https://www.bogotobogo.com/DevOps/Jenkins/Jenkins_GitHub_Java_Application_Project_Build_Configuration_Maven.php
 
-First of all, create a Jenkins Freestyle Project.
-
-TZ=Asia/Kolkata
-0 */1 * * *
-
-Please add the above code in Build periodically box. It will run your code once an hour. For creating the jar file,
-
-cd '<your project location in the disk>'
-mvn clean install
-
-Now this will build your jar file. To run the jar file,
-
-cd 'target'
-java -jar <project jar file name>.jar
-
-So total script will be like :
-
-cd '<your project location in the disk>'
-mvn clean install
-cd 'target'
-java -jar <project jar file name>.jar
-
-Add the above code to Execute shell block in Build -> Add build step -> Execute shell in the job configuration. Hope this is what you are looking for.
+###### Build a WAR file with Maven and Deploy it to a remote container
+1. Create a new freestyle project
+2. Config the source project from git repository
+3. Create build stage with "Invoke top-level Maven targets" and "Package" as goal
+4. Create Post-build stage with "Deploy war/ear to a container":
+   - Choose "**/*.war" as file types
+   - Choose context path of the project
+   - Add credential in Jenkins to connect to remote tomcat (credentials are setted
+     in "TOMCAT_HOME/conf/tomcat-users.xml")
+     If Jenkins gets error "The username you provided is not allowed to use the text-based     	Tomcat Manager (error 403) when deploying on remote Tomcat" edit the file at 	      	    "TOMCAT_HOME/webapps/manager/META-INF/context.xml" and comment the "Valve" attribute
+   - Choose the URL of Tomcat
+   
