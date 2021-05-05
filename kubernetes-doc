@@ -35,6 +35,13 @@ $ kubectl expose deployment hello-minikube  --type=NodePort
 ###### Delete deployment
 kubectl delete deployment hello-minikube
 
+###### Check deployments
+kubectl get deployments
+
+###### Describe a deployment
+kubectl describe deployments <deployment name>
+$ kubectl describe deployments tomcat-deployment
+
 ###### Scaling deployment with more replicas
 kubectl scale --replicas=4 deployment/<deployment name>
 $ kubectl scale --replicas=4 deployment/tomcat-deployment
@@ -50,11 +57,17 @@ kubectl list deployments
 kubectl rollout status
 
 ###### Set image of a deployment
-kubectl set image
+kubectl set image deployment/<deployment name> <command>
+$ kubectl set image deployment/tomcat-deployment tomcat=tomcat:9.0.1
 
 ###### View the history of a rollout, including previous revisions
-kubectl rollout history
- 
+kubectl rollout history deployment/<deployment name>
+$ kubectl rollout history deployment/tomcat-deployment
+
+###### View a specific revision
+kubectl rollout history deployment/<deployment name> --revision=<number of revision>
+$ kubectl rollout history deployment/tomcat-deployment --revision=4
+
 ------------------------------ PODS -------------------------------
 ###### List the active "pods"
 kubectl get pod
