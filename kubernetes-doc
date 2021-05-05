@@ -98,3 +98,31 @@ curl $(minikube service hello-minikube --url)
 ###### Describe service
 kubectl describe services <service name>
 $ kubectl describe services tomcat-load-balancer
+
+----------------------------- NODES ---------------------------------
+###### View nodes
+kubectl get nodes
+
+###### Describe a node
+kubctl describe node <node_name>
+$ kubctl describe node minikube
+
+###### Create a label for a Node
+kubectl label node <node_name> <label>
+$ kubectl label node minikube storageType=ssd
+
+-------------------------- DASHBOARD UI -----------------------------
+###### Install
+kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+
+###### Execute
+kubectl proxy
+
+###### Navigate
+http://localhost:8001/ui
+
+If this command shows only API path and not the user interface, then run:
+  minikube dashboard
+or
+  http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy
+to fix it.
