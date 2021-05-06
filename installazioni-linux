@@ -101,3 +101,6 @@ sudo systemctl status wildfly
 sudo systemctl enable wildfly
 sudo /opt/wildfly/bin/add-user.sh (username=admin-wildfly)
 http://localhost:8080
+
+---------------------- VISUAL STUDIO CODE --------------------
+sudo dpkg -i code_1.55.2-1618307277_amd64.deb

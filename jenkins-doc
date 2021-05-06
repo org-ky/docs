@@ -1,14 +1,5 @@
 -------------------------------------------- JENKINS ----------------------------------------------
 
-Jenkins è uno strumento di integrazione continua open source e rappresenta uno dei principali strumenti di automazione di compiti. 
-Esso permette agli utenti, tramite la definizione di project (in passato definiti jobs) di automatizzare una serie complessa di compiti, quali
-ad esempio la compilazione di una componente software a partire dal suo codice sorgente, l’esecuzione dei test e la visualizzazione dei loro risultati e il deploy dell’artefatto 
-ottenuto verso un dei prodotti.
-Jenkins è facilmente installabile e configurabile ed è funzionante “out of the box” senza particolari impostazioni; presenta un ricco ecosistema di plugin messi a disposizione 
-dalla comunità ed è estensibile, tramite questi ultimi, qualora le funzionalità desiderate non fossero già disponibili.
-Jenkins si basa su un’architettura master-slave, dove un’istanza principale (il master) coordina i vari compiti tra uno o più slave, i quali rappresentano dei meri esecutori dei 
-lavori a loro assegnati.
-
 ###### Install Jenkins
 https://www.youtube.com/watch?v=pMO26j2OUME
 
@@ -16,18 +7,41 @@ Creato utente "admin" con mail "kyko2323@gmail.com"
 
 L’interfaccia presenta la sezione di controllo sulla spalla sinistra e un riassunto degli ultimi job eseguiti.
 
-La configurazione avviene mediante il menu Manage Jenkins. Volendosi limitare ad una configurazione semplice, oltre alla configurazione degli utenti e dei loro privilegi, che ci sentiamo di consigliare caldamente, vanno configurati solo i seguenti parametri:
+La configurazione avviene mediante il menu Manage Jenkins. 
+Volendosi limitare ad una configurazione semplice, oltre alla configurazione degli utenti e dei loro privilegi, 
+che ci sentiamo di consigliare caldamente, vanno configurati solo i seguenti parametri:
 
-    # of executors, ovvero il numero di job eseguibili contemporaneamente nel nodo, il valore di default è 2,
-    Jenkins Location: è l’URL pubblica di Jenkins stesso e l’indirizzo email dell’amministratore di Jenkins
+  1. # of executors, ovvero il numero di job eseguibili contemporaneamente nel nodo, il valore di default è 2,
+  2. Jenkins Location: è l’URL pubblica di Jenkins stesso e l’indirizzo email dell’amministratore di Jenkins
 
-Una configurazione più avanzata permette di abilitare una delle caratteristiche maggiormente apprezzate di Jenkins: il parallelismo su più macchine. 
-È possibile infatti installare Jenkins su più nodi (detti slave) di una rete; tutti gli slave vengono coordinati dall’unico nodo master, il quale distribuisce il carico di lavoro tra i vari slave per ottimizzare la velocità di esecuzione dei job. 
-È questa una caratteristica particolarmente apprezzata in quei progetti in generale molto grandi o con un elevato numero di test automatici da effettuare.
+Una configurazione più avanzata permette di abilitare una delle caratteristiche maggiormente apprezzate di Jenkins: 
+il parallelismo su più macchine. 
+È possibile infatti installare Jenkins su più nodi (detti slave) di una rete; tutti gli slave vengono coordinati 
+dall’unico nodo master, il quale distribuisce il carico di lavoro tra i vari slave per ottimizzare la velocità 
+di esecuzione dei job. 
+È questa una caratteristica particolarmente apprezzata in quei progetti in generale molto grandi o con un elevato 
+numero di test automatici da effettuare.
 
 ###### Restart Jenkins
 http://localhost:8080/safeRestart
 
+###### Triggers Jenkins build
+https://youtu.be/CmwTPxdx24Y
+
+###### Build jar file with Maven
+
+###### Build a WAR file with Maven and Deploy it to a remote container
+1. Create a new freestyle project
+2. Config the source project from git repository
+3. Create build stage with "Invoke top-level Maven targets" and "Package" as goal
+4. Create Post-build stage with "Deploy war/ear to a container":
+   - Choose "**/*.war" as file types
+   - Choose context path of the project
+   - Add credential in Jenkins to connect to remote tomcat (credentials are setted
+     in "TOMCAT_HOME/conf/tomcat-users.xml")
+     If Jenkins gets error "The username you provided is not allowed to use the text-based     	Tomcat Manager (error 403) when deploying on remote Tomcat" edit the file at 	      	    "TOMCAT_HOME/webapps/manager/META-INF/context.xml" and comment the "Valve" attribute
+   - Choose the URL of Tomcat
+   
 ###### Create Multibranch Pipeline with Git
 https://www.youtube.com/watch?v=tuxO7ZXplRE
 
@@ -54,20 +68,5 @@ Un tipico job orientato alla CI, verifica periodicamente se ci sono dei nuovi co
 https://youtu.be/MY1w7sWW5ms
 https://www.youtube.com/watch?v=7KCS70sCoK0
 
-###### Triggers Jenkins build
-https://youtu.be/CmwTPxdx24Y
 
-###### Build jar file with Maven
-
-###### Build a WAR file with Maven and Deploy it to a remote container
-1. Create a new freestyle project
-2. Config the source project from git repository
-3. Create build stage with "Invoke top-level Maven targets" and "Package" as goal
-4. Create Post-build stage with "Deploy war/ear to a container":
-   - Choose "**/*.war" as file types
-   - Choose context path of the project
-   - Add credential in Jenkins to connect to remote tomcat (credentials are setted
-     in "TOMCAT_HOME/conf/tomcat-users.xml")
-     If Jenkins gets error "The username you provided is not allowed to use the text-based     	Tomcat Manager (error 403) when deploying on remote Tomcat" edit the file at 	      	    "TOMCAT_HOME/webapps/manager/META-INF/context.xml" and comment the "Valve" attribute
-   - Choose the URL of Tomcat
    
