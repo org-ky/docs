@@ -24,13 +24,37 @@ minikube status
 If error, run:
 minikube start —vm driver=none
 
+###### K8S version
+kubectl version
+
+---------------------------  INTRODUCTION ------------------------------
+The DEPLOYMENT manages REPLICASET.
+REPLICASET manages a POD.
+POD is an abstraction of CONTAINER.
 
 ----------------------------- DEPLOYMENT -------------------------------
+###### Create a Deployment from a Docker image
+kubectl create deployment <name_deployment> --image=<docker_image>
+$ kubectl create deployment nginx-depl --image=nginx
+
+###### Create a deploymnet by YAML file
+kubectl apply -f deployment.yaml
+
+###### View a Deployment
+kubectl get deployment <deployment_name>
+kubectl get deployment <deployment_name> -o yaml  (output in yaml format)
+
+###### View ReplicaSet of the deployment
+kubectl get replicaset
+
+###### Edit a Deployment
+kubectl edit deployment <deployment_name>
+
+###### Delete a deployment by YAML file
+kubectl delete -f deployment.yaml
+
 ###### Deploy a deploymnet by image
 kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080
-
-###### Deploy a deploymnet by YAML file
-kubectl apply -f ./deployment.yaml
 
 ###### Expose deployment
 kubectl expose deployment <deployment name> --type=NodePort
@@ -75,6 +99,7 @@ $ kubectl rollout history deployment/tomcat-deployment --revision=4
 ------------------------------ PODS -------------------------------
 ###### List the active "pods"
 kubectl get pod
+kubectl get pod -o wide (more information like IP address)
 
 ###### Describe pod
 kubectl describe pod <pod name>
@@ -83,6 +108,7 @@ kubectl describe pod <pod name>
 kubectl port-forward <pod name> [local port]:[remote port]
 
 ###### Read pod logs
+kubectl logs <pod_name>
 kubectl attach <pod name>
 
 ###### Associate key-velue label to the pod
@@ -93,6 +119,9 @@ kubectl exec -it pod <pod name> bash
 
 
 ---------------------------- SERVICES -------------------------------
+###### List the active "services"
+kubectl get services
+
 ###### Service info
 minikube service hello-minikube --url
 

@@ -39,8 +39,32 @@ https://youtu.be/CmwTPxdx24Y
    - Choose context path of the project
    - Add credential in Jenkins to connect to remote tomcat (credentials are setted
      in "TOMCAT_HOME/conf/tomcat-users.xml")
-     If Jenkins gets error "The username you provided is not allowed to use the text-based     	Tomcat Manager (error 403) when deploying on remote Tomcat" edit the file at 	      	    "TOMCAT_HOME/webapps/manager/META-INF/context.xml" and comment the "Valve" attribute
+     If Jenkins gets error "The username you provided is not allowed to use the text-based     	
+     Tomcat Manager (error 403) when deploying on remote Tomcat" edit the file at 	      	    
+     "TOMCAT_HOME/webapps/manager/META-INF/context.xml" and comment the "Valve" attribute
    - Choose the URL of Tomcat
+
+###### Build a WAR file with Maven and Deploy it to a remote container using GitHub Hook
+1. Create a new freestyle project
+2. Config the source project from git repository
+3. Create build stage with "Invoke top-level Maven targets" and "Package" as goal
+4. Create Post-build stage with "Deploy war/ear to a container":
+   - Choose "**/*.war" as file types
+   - Choose context path of the project
+   - Add credential in Jenkins to connect to remote tomcat (credentials are setted
+     in "TOMCAT_HOME/conf/tomcat-users.xml")
+     If Jenkins gets error "The username you provided is not allowed to use the text-based     	
+     Tomcat Manager (error 403) when deploying on remote Tomcat" edit the file at 	      	    
+     "TOMCAT_HOME/webapps/manager/META-INF/context.xml" and comment the "Valve" attribute
+   - Choose the URL of Tomcat
+   - Login to: https://my.webhookrelay.com/ with "admin, pwd9" and verified that a Token is created
+     with Key: 6bc4eead-2953-43e1-abb0-d85af7f391dd and  Secret: 8IlajJRNUOTi
+   - From command line login and run Relay service:
+        - relay login -k 6bc4eead-2953-43e1-abb0-d85af7f391dd -s 8IlajJRNUOTi
+        - relay forward --bucket github-jenkins http://localhost:8080/github-webhook/
+   - In GitHub repository go in Setting->Webhook and create a Hook with the forwarding
+     Url "https://yhby8rxwxynitc4aosx71c.hooks.webhookrelay.com" provided from Relay forward command
+   - In Build Trigger of Jenkins job section use "GitHub hook trigger for GITScm polling"
    
 ###### Create Multibranch Pipeline with Git
 https://www.youtube.com/watch?v=tuxO7ZXplRE

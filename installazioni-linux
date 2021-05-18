@@ -5,12 +5,15 @@ sudo apt install openjdk-8-jdk
 #Java Directory
 whereis java (/usr/bin/java)
 
+#JDK Directory
+/usr/lib/jvm/java-8-openjdk-amd64
+
 #Change Default Java
 sudo update-alternatives --config java
 java -version
 
 #Set JAVA_HOME
-export $JAVA_HOME=/usr/bin/java (java directory: /lib/jvm/java-8-openjdk-amd64)
+export $JAVA_HOME=/usr/bin/java
 
 ------------------- ECLIPSE -----------------
 #Install
@@ -81,7 +84,7 @@ sudo systemctl start glassfish
 sudo systemctl status glassfish
 
 
-WILDFLY
+---------------------WILDFLY---------------------------
 [https://vitux.com/install-and-configure-wildfly-jboss-on-ubuntu/]
 
 sudo apt-get update
@@ -104,3 +107,16 @@ http://localhost:8080
 
 ---------------------- VISUAL STUDIO CODE --------------------
 sudo dpkg -i code_1.55.2-1618307277_amd64.deb
+
+--------------------------- RELAY ----------------------------
+https://webhookrelay.com/v1/installation/cli
+https://webhookrelay.com/blog/2017/11/23/github-jenkins-guide/
+https://devcenter.bitrise.io/webhooks/adding-a-github-webhook/
+
+sudo wget -O /usr/local/bin/relay https://storage.googleapis.com/webhookrelay/downloads/relay-linux-amd64
+
+Login: https://my.webhookrelay.com/, admin, pwd9
+Use:
+relay login -k 6bc4eead-2953-43e1-abb0-d85af7f391dd -s 8IlajJRNUOTi
+
+relay forward --bucket github-jenkins http://localhost:8080/github-webhook/
