@@ -13,6 +13,9 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s htt
 curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.23.0/minikube-linux-amd64 && chmod +xminikube && sudo mv minikube /usr/local/bin/
 
 
+###### K8S version
+kubectl version
+
 -------------------------- START/STOP/STATUS --------------------------
 ###### Start/Stop Minikube
 minikube start
@@ -23,9 +26,6 @@ minikube status
 
 If error, run:
 minikube start —vm driver=none
-
-###### K8S version
-kubectl version
 
 ---------------------------  INTRODUCTION ------------------------------
 The DEPLOYMENT manages REPLICASET.
