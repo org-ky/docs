@@ -12,7 +12,6 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s htt
 ###### Install Minikube
 curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.23.0/minikube-linux-amd64 && chmod +xminikube && sudo mv minikube /usr/local/bin/
 
-
 ###### K8S version
 kubectl version
 
