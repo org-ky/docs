@@ -12,12 +12,19 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s htt
 ###### Install Minikube
 curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.23.0/minikube-linux-amd64 && chmod +xminikube && sudo mv minikube /usr/local/bin/
 
+###### Kubectl commands
+kubectl
+
+###### Minikube commands
+minikube 
+
 ###### K8S version
 kubectl version
 
 -------------------------- START/STOP/STATUS --------------------------
 ###### Start/Stop Minikube
 minikube start
+minikube start --vm-driver=hyperkit
 minikube stop
 
 ###### Status Minikube
@@ -26,14 +33,17 @@ minikube status
 If error, run:
 minikube start —vm driver=none
 
----------------------------  INTRODUCTION ------------------------------
-The DEPLOYMENT manages REPLICASET.
+----------------------- LAYERS OF ABSTRACTION --------------------------
+DEPLOYMENT manages REPLICASET.
 REPLICASET manages a POD.
 POD is an abstraction of CONTAINER.
-
+CONTAINER
 ----------------------------- DEPLOYMENT -------------------------------
+###### Create commands
+kubectl create -h
+
 ###### Create a Deployment from a Docker image
-kubectl create deployment <name_deployment> --image=<docker_image>
+kubectl create deployment <name_deployment> --image=<docker_image> [--dry-run] [options]
 $ kubectl create deployment nginx-depl --image=nginx
 
 ###### Create a deploymnet by YAML file
@@ -47,7 +57,12 @@ kubectl get deployment <deployment_name> -o yaml  (output in yaml format)
 kubectl get replicaset
 
 ###### Edit a Deployment
+## Quando si edita un deployment, ad esempio si cambia versione dell'image,
+## il pod che sta girando viene interrotto e parte automaticamente il nuovo pod
 kubectl edit deployment <deployment_name>
+
+###### Delete a deployment
+kubectl delete deployment <deployment_name>
 
 ###### Delete a deployment by YAML file
 kubectl delete -f deployment.yaml
@@ -114,8 +129,12 @@ kubectl attach <pod name>
 kubectl label pods <pod name> <key>=<value>
 
 ###### Enter into the pod
-kubectl exec -it pod <pod name> bash
+kubectl exec -it pod <pod name> --bin/bash
 
+
+----------------------------REPLICASET-------------------------------
+###### List the replicaset of all pods
+kubectl get replicaset
 
 ---------------------------- SERVICES -------------------------------
 ###### List the active "services"
