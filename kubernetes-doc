@@ -65,7 +65,7 @@ kubectl edit deployment <deployment_name>
 kubectl delete deployment <deployment_name>
 
 ###### Delete a deployment by YAML file
-kubectl delete -f deployment.yaml
+kubectl delete -f <deployment_name>.yaml
 
 ###### Deploy a deploymnet by image
 kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080
