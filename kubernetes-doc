@@ -38,6 +38,11 @@ DEPLOYMENT manages REPLICASET.
 REPLICASET manages a POD.
 POD is an abstraction of CONTAINER.
 CONTAINER
+
+------------------------------ CLUSTER ---------------------------------
+###### Get all components of the cluster
+kubectl get all
+
 ----------------------------- DEPLOYMENT -------------------------------
 ###### Create commands
 kubectl create -h
@@ -138,13 +143,16 @@ kubectl get replicaset
 
 ---------------------------- SERVICES -------------------------------
 ###### List the active "services"
-kubectl get services
+$ kubectl get services
+
+###### Run the service
+minikube service <service_name>
 
 ###### Service info
-minikube service hello-minikube --url
+$ minikube service hello-minikube --url
 
 ###### Access the sample service
-curl $(minikube service hello-minikube --url)
+$ curl $(minikube service hello-minikube --url)
 
 ###### Describe service
 kubectl describe services <service name>
@@ -161,6 +169,10 @@ $ kubctl describe node minikube
 ###### Create a label for a Node
 kubectl label node <node_name> <label>
 $ kubectl label node minikube storageType=ssd
+
+----------------------------- SECRET --------------------------------
+###### Get all secret deployment
+kubectl get secret
 
 -------------------------- DASHBOARD UI -----------------------------
 ###### Install
