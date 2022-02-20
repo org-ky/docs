@@ -1,0 +1,145 @@
+-----------------------------DOCKER INSTALL-----------------------------------
+
+####### Import Docker GPG key used for signing Docker packages:
+curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+
+###### Add Docker repository which contain the latest stable releases of Docker CE. ######
+###### This command will add repository URL to /etc/apt/sources.list.d/docker.list. ######
+echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | tee /etc/apt/sources.list.d/docker.list
+apt-get update
+
+###### To install Docker CE
+apt-get remove docker docker-engine docker.io
+apt-get -y install docker-ce
+systemctl start docker
+systemctl enable docker
+
+###### Version Check
+docker version
+
+###### Manage Docker as a non-root user
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker run hello-world
+
+-----------------------------DOCKER SERVICE----------------------------------
+
+sudo systemctl start docker
+sudo systemctl stop docker
+sudo systemctl restart docker
+sudo systemctl status docker
+sudo systemctl enable docker
+sudo systemctl disable docker
+
+-----------------------------DOCKER IMAGES-----------------------------------
+
+###### Download image from Docker Hub
+docker pull [OPTIONS] NAME [:TAG|@DIGEST]
+$ docker pull busybox:stable-uclibc
+
+###### List images
+docker images
+
+###### Create image from Dockerfile
+docker build -t nome_utente_dockerhub/nome_immagine .
+docker build -t nome_utente_dockerhub/nome_immagine . --no-cache=true
+
+-----------------------------DOCKER HUB--------------------------------------
+
+###### Login to dockerhub
+docker login --username=<username>
+$ docker login --username=xelex
+
+###### Upload image to dockerhub
+docker build -t <hub-user>/<repo-name>[:<tag>]
+docker tag <existing-image> <hub-user>/<repo-name>[:<tag>]
+docker commit <existing-container> <hub-user>/<repo-name>[:<tag>]
+docker push <hub-user>/<repo-name>:<tag>
+$ docker push xelex/debian:1.01
+
+-----------------------------DOCKER CONTAINER--------------------------------
+
+###### Run a container
+docker run [OPTIONS] IMAGE [:TAG|@DIGEST] [CMD] [ARG...]
+$ docker run busybox:1.24
+$ docker run busybox:1.24 echo “hello world”
+$ docker run busybox:1.24 ls /
+$ docker run -i -t busybox:1.24
+$ docker run -d busybox:1.24
+$ docker run -d busybox:1.24 sleep 1000
+$ docker run --rm busybox:1.24 sleep 1
+$ docker run –name hello_world busybox:1.24 sleep 1
+
+docker run -p host_port:container_port IMAGE [:TAG|
+$ docker run -it -p 8888:8080 tomcat:8.0
+
+###### Inspect a container
+docker inspect <container_id>
+
+###### Container Log
+docker logs <container_id>
+
+###### Show All Containers
+sudo docker ps -a
+
+###### Show Active Containers
+sudo docker ps
+
+###### Rerun a container
+docker run <cimage name>
+
+###### Remame a container
+docker rm <container name>
+$ docker rm quizzical_nash 
+
+###### Log into container as root
+sudo docker exec -u 0 -it <container_id> bash
+$ sudo docker exec -u 0 -it aaa229b659b3 bash
+
+###### Run a command on existing container
+docker exec -it <container-id> <command-name>
+$ docker exec -it bc0ffceb320a bash
+
+###### Copy file from host to container
+sudo docker cp Scaricati/apache-maven-3.8.1-bin.tar.gz <container_id>:/etc
+$ sudo docker cp Scaricati/apache-maven-3.8.1-bin.tar.gz aaa229b659b3:/etc
+
+###### Start a container
+docker start <container_id>
+
+###### Automatic start a container
+sudo docker update --restart unless-stopped <container_id>
+
+------------------------------DOCKER COMPOSE-----------------------------------
+
+###### Docker Compose Install
+sudo apt install -y curl
+curl -s https://api.github.com/repos/docker/compose/releases/latest \
+  | grep browser_download_url \
+  | grep docker-compose-Linux-x86_64 \
+  | cut -d '"' -f 4 \
+  | wget -qi -
+chmod +x docker-compose-Linux-x86_64
+sudo mv docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+docker-compose version
+
+###### Starts up all the containers
+docker-compose up
+
+###### Checks the status of the container managed
+docker-compose ps
+
+###### Logs the containers
+docker-compose logs
+docker-compose logs -f
+docker-compose logs <container name>
+
+###### Stops all the running containers
+docker-compose stop
+
+###### Removes all the containers
+docker-compose rm
+
+###### Rebuilds all the images
+docker-compose build
