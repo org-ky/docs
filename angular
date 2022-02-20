@@ -1,0 +1,26 @@
+1. Installare node js
+   Node.js è un runtime Javascript. In pratica, un ambiente di esecuzione che permette di eseguire codice Javascript come un qualsiasi linguaggio di programmazione.
+   Potremmo dire che Node.js ha fatto uscire Javascript dal browser trasformandolo in un linguaggio di programmazione come qualsiasi altro.
+   
+2. Lanciare il comando da shell: node -v
+
+3. Lanciare il comando da shell: npm -v
+   npm, abbreviazione di Node Package Manager, è il gestore di pacchetti ufficiale che viene installato con la piattaforma Node.js. 
+   Si tratta quindi di un'interfaccia a riga di comando (CLI) che aiuta nell'installazione dei pacchetti, nella gestione delle versioni e nella gestione delle dipendenze.
+   npm fa anche riferimento al registro, un grande database pubblico di applicazioni JavaScript, e al sito web che consente di scoprire pacchetti, impostare profili e 
+   gestire altri aspetti dell'esperienza npm.
+   
+4. Da VisualStudioCode o da prompt aprire un terminale e digitare:
+   npm install -g @angular/cli
+   
+5. Da VisualStudioCode o da prompt posizionarsi nella cartella "vsworkspace" e creare un nuovo progetto Angular:
+   ng new <nome_progetto>
+  
+6. A fine creazione fare "open project" da Visual Studio Code e scegliere la cartella "<nuovo_progetto>" nel workspace scelto.
+
+7. Da terminale posizionarsi nella cartella del progetto ed avviare l'applicazione:
+   ng serve
+   
+8. Da browser digitare:
+   http://localhost:4200/
+   
