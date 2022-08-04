@@ -46,3 +46,19 @@ dovrai marcarli come 'correttamente incorporati' tramite
     git add <nomedelfile>
 prima di immettere le modifiche, potrai anche visualizzarne un'anteprima eseguendo
     git diff <branch_sorgente> <branch_target>
+    
+7. Git MERGE
+Fondere due branch
+
+8. Git REBASE
+Integrare i commit di un branch nell'altro.
+L'operazione di rebasing (rifondazione) consiste nello spostare una serie di commit in modo tale 
+che il primo di questi sia preceduto da un diverso commit. 
+Detto in altro modo, eseguendo il comando 
+    git rebase 
+su un branch, quest'ultimo avrà una nuova base di partenza.
+A voler essere più precisi, i commit non vengono in realtà spostati.
+Ogni commit è un oggetto unico e immutabile identificato in maniera univoca da un valore di hash 
+generato usando l'algoritmo SHA-1.
+Per questo motivo non è possibile modificare il genitore di un commit.
+Vengono quindi creati dei nuovi commit sulla base delle informazioni contenute nei vecchi oggetti.
