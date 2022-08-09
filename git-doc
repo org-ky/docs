@@ -70,6 +70,5 @@ Mostra i file modificati
 Con l'aiuto di questo comando, puoi memorizzare temporaneamente il tuo lavoro attuale per passare 
 a qualcos'altro.
     git stash
-
 Per tornare a lavorare da dove si era interrotto digitare:
     git stash pop
