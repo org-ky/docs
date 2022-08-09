@@ -62,3 +62,14 @@ Ogni commit è un oggetto unico e immutabile identificato in maniera univoca da 
 generato usando l'algoritmo SHA-1.
 Per questo motivo non è possibile modificare il genitore di un commit.
 Vengono quindi creati dei nuovi commit sulla base delle informazioni contenute nei vecchi oggetti.
+
+9. Git STATUS
+Mostra i file modificati
+
+10. Git STASH
+Con l'aiuto di questo comando, puoi memorizzare temporaneamente il tuo lavoro attuale per passare 
+a qualcos'altro.
+    git stash
+
+Per tornare a lavorare da dove si era interrotto digitare:
+    git stash pop
