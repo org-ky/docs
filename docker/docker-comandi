@@ -80,6 +80,12 @@ docker inspect <container_id>
 ###### Container Log
 docker logs <container_id>
 
+###### Display statistics for container
+docker stats <container_id>
+
+###### Display statistics for all containers
+docker stats
+
 ###### Show All Containers
 sudo docker ps -a
 
