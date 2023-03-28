@@ -111,6 +111,10 @@ $ docker exec -it bc0ffceb320a bash
 sudo docker cp Scaricati/apache-maven-3.8.1-bin.tar.gz <container_id>:/etc
 $ sudo docker cp Scaricati/apache-maven-3.8.1-bin.tar.gz aaa229b659b3:/etc
 
+###### Copy file from container to host
+docker cp <container_id>:/path/source/file path/dest/file
+$ docker cp fabafb897f99:/usr/share/elasticsearch/config/elasticsearch.yml C:\Users\lrugg\Desktop\
+
 ###### Start a container
 docker start <container_id>
 
